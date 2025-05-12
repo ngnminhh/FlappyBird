@@ -2,27 +2,25 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject prefab;
+    public GameObject pipeGroupPrefab;
     public float spawnRate = 1f;
-    public float minHeight = -1f;
-    public float maxHeight = 2f;
-    
+    private float timer;
 
-    private void OnEnable()
+    private void Update()
     {
-        InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
+        timer += Time.deltaTime;
+
+        if (timer >= spawnRate)
+        {
+            Spawn();
+            timer = 0f;
+        }
     }
 
-    private void OnDisable()
+    void Spawn()
     {
-        CancelInvoke(nameof(Spawn));
+        float randomY = Random.Range(-1f, 2f);
+        Vector3 spawnPos = new Vector3(transform.position.x, randomY, 0f);
+        Instantiate(pipeGroupPrefab, spawnPos, Quaternion.identity);
     }
-
-    private void Spawn()
-    {
-        GameObject pipes = Instantiate(prefab, transform.position, Quaternion.identity);
-        pipes.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
-        
-    }
-
 }

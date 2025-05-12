@@ -1,39 +1,16 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Pipes : MonoBehaviour
 {
-    
-    public float speed = 5f;
-    
-
-    private float leftEdge;
-    private bool hasScored = false;
-
-
-    private void Start()
-    {
-        leftEdge = Camera.main.ScreenToWorldPoint(Vector3.zero).x - 1f;
-        
-    }
+    public float moveSpeed = 3f;
 
     private void Update()
     {
-        transform.position += speed * Time.deltaTime * Vector3.left;
+        transform.position += Vector3.left * moveSpeed * Time.deltaTime;
 
-        if (transform.position.x < leftEdge)
+        if (transform.position.x < -10f) // Khi vượt qua trái màn hình
         {
             Destroy(gameObject);
-    
         }
-
-        if (!hasScored && transform.position.x < GameObject.FindGameObjectWithTag("Player").transform.position.x)
-        {
-            FindObjectOfType<GameManager>().IncreaseScore();
-            hasScored = true;
-        }
-
     }
-
-
-
 }
