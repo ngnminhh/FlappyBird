@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Pipes : MonoBehaviour
+public class Boms : MonoBehaviour
 {
     
     public float speed = 5f;
