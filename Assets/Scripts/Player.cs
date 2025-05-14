@@ -38,7 +38,7 @@ public class Player: MonoBehaviour
         }
 
         direction.y += gravity * Time.deltaTime;
-        transform.position += direction * Time.deltaTime;
+        transform.position += direction * Time.deltaTime * 0.8f;
 
         // Nếu player rơi xuống khỏi màn hình
         if (transform.position.y < -6f)
