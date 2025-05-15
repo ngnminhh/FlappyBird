@@ -26,11 +26,11 @@ public class Boms : MonoBehaviour
     
         }
 
-        if (!hasScored && transform.position.x < GameObject.FindGameObjectWithTag("Player").transform.position.x)
-        {
-            FindObjectOfType<GameManager>().IncreaseScore();
-            hasScored = true;
-        }
+        //if (!hasScored && transform.position.x < GameObject.FindGameObjectWithTag("Player").transform.position.x)
+        //{
+        //    FindObjectOfType<GameManager>().IncreaseScore();
+        //    hasScored = true;
+        //}
 
     }
 

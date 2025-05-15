@@ -192,6 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7015434168740834325}
   - component: {fileID: 3088415579692565058}
+  - component: {fileID: 8924534366736444888}
   m_Layer: 0
   m_Name: Scoring
   m_TagString: Scoring
@@ -244,7 +245,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -258,8 +259,20 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.67, y: 2.83}
+  m_Size: {x: 0.89, y: 2.8}
   m_EdgeRadius: 0
+--- !u!114 &8924534366736444888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5718489758467504547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 398dcb2353dabfa47b9a271b55c44010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8345974678074443496
 GameObject:
   m_ObjectHideFlags: 0
