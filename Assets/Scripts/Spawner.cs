@@ -20,8 +20,8 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
-        GameObject pipes = Instantiate(prefab, transform.position, Quaternion.identity);
-        pipes.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
+        GameObject boms = Instantiate(prefab, transform.position, Quaternion.identity);
+        boms.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
         
     }
 

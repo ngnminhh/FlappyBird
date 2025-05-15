@@ -28,11 +28,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         player.enabled = true;
 
-        Boms[] pipes = FindObjectsOfType<Boms>();
+        Boms[] boms = FindObjectsOfType<Boms>();
 
-        for (int i = 0; i < pipes.Length; i++)
+        for (int i = 0; i < boms.Length; i++)
         {
-            Destroy(pipes[i].gameObject);
+            Destroy(boms[i].gameObject);
         }
         player.transform.position = Vector3.zero;
         typeof(Player).GetField("direction", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(player, Vector3.zero);
