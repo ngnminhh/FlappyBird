@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 404480711614701872}
   serializedVersion: 2
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: 0.01, y: 3.42, z: 0}
-  m_LocalScale: {x: 2.3898506, y: 2.7156, z: 1}
+  m_LocalPosition: {x: 0.02, y: 4.15, z: 0}
+  m_LocalScale: {x: 2.7954998, y: 3.4702652, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1004769165066031735}
@@ -144,6 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1004769165066031735}
   - component: {fileID: -6450343297602225862}
+  - component: {fileID: 4805782637339719227}
   m_Layer: 0
   m_Name: Bom
   m_TagString: Untagged
@@ -181,7 +182,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8dd3746e3385754bafb587bdb686164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.5
+  moveSpeed: 3
+--- !u!114 &4805782637339719227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800653280569484431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef2b14260d587c24cb823d442dce550e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  triggerDistance: 5
+  player: {fileID: 0}
 --- !u!1 &5718489758467504547
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,8 +316,8 @@ Transform:
   m_GameObject: {fileID: 8345974678074443496}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0195, y: -3.28, z: 0}
-  m_LocalScale: {x: 2.308342, y: 2.5672545, z: 1}
+  m_LocalPosition: {x: 0.01, y: -3.97, z: 0}
+  m_LocalScale: {x: 2.935057, y: 3.3963223, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1004769165066031735}
