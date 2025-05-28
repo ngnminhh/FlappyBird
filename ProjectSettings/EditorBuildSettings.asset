@@ -9,6 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/FlappyBird.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: c2b1b7cbbf24d9f44b5b7f49b4a677f3, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: edc47246f9b48374b99e1572ac551b3b, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: bbfe4ec26b745254991fa8815712ed35, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

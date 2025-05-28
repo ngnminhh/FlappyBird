@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
     public GameObject gameOver;
     public int DEFAULT_PRICE_PER_REPLAY = 1;
 
+    public GameObject popupNotEnough;
+    public GameObject tutorialPanel;
+
+    public SCR_UIManager uiManager; // THÊM tham chiếu tới UI Manager
+
     private int score;
     private int highScore;
 
@@ -20,22 +25,86 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         highScore = PlayerPrefs.GetInt("HighScore", 0);
+
         if (highScoreText != null)
             highScoreText.gameObject.SetActive(false);
         else
             Debug.LogError("highScoreText is not assigned!");
 
         Pause();
+        ShowTutorialIfFirstTime(); // THÊM dòng này để kiểm tra tutorial
+    }
+
+    public void ShowTutorialIfFirstTime()
+    {
+        if (!PlayerPrefs.HasKey("HasSeenTutorial"))
+        {
+            if (tutorialPanel != null)
+            {
+                tutorialPanel.SetActive(true);
+                PlayerPrefs.SetInt("HasSeenTutorial", 1);
+                PlayerPrefs.Save();
+
+                // Ẩn Store nếu có
+                if (uiManager != null)
+                    uiManager.HideStore();
+                else
+                    Debug.LogWarning("uiManager is not assigned!");
+            }
+            else
+            {
+                Debug.LogError("tutorialPanel is not assigned!");
+            }
+        }
+        else
+        {
+            if (tutorialPanel != null)
+                tutorialPanel.SetActive(false);
+        }
+    }
+
+
+    public void ShowTutorial()
+    {
+        if (tutorialPanel != null)
+        {
+            tutorialPanel.SetActive(true);
+        }
+    }
+
+    // Gọi hàm này từ nút đóng Tutorial
+    public void CloseTutorial()
+    {
+        if (tutorialPanel != null)
+            tutorialPanel.SetActive(false);
+
+        
+    }
+
+    public void HidePopupNotEnough()
+    {
+        if (popupNotEnough != null)
+        {
+            popupNotEnough.SetActive(false);
+        }
+    }
+
+    public void ShowPopupNotEnough()
+    {
+        if (popupNotEnough != null)
+        {
+            popupNotEnough.SetActive(true);
+        }
     }
 
     public void Play()
     {
-        // Debug logs để kiểm tra null
         if (Play_BTN == null)
         {
             Debug.LogError("Play_BTN is NULL! Hãy kéo nút Play vào GameManager trong Inspector.");
             return;
         }
+
         if (gameOver == null)
         {
             Debug.LogError("gameOver is NULL!");
@@ -54,6 +123,7 @@ public class GameManager : MonoBehaviour
             highScoreText.gameObject.SetActive(false);
 
         Time.timeScale = 1f;
+
         if (player != null)
             player.enabled = true;
         else
@@ -67,7 +137,6 @@ public class GameManager : MonoBehaviour
 
         if (player != null)
         {
-            player.transform.position = Vector3.zero;
             typeof(Player).GetField("direction", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 ?.SetValue(player, Vector3.zero);
         }
@@ -128,19 +197,17 @@ public class GameManager : MonoBehaviour
     {
         StopAllCoroutines();
 
-        const string currencyID = "clam"; // đảm bảo dùng đúng ID từ DB
+        const string currencyID = "clam";
         int currentClam = DBManager.GetCurrency(currencyID);
         Debug.Log($"Số {currencyID} hiện tại: {currentClam}");
 
         if (currentClam < DEFAULT_PRICE_PER_REPLAY)
         {
             Debug.Log($"Không đủ {currencyID}, bạn đang có {currentClam}");
-            // Nếu có UI popup thông báo, gọi ở đây
-            // uIManager.ShowPopupNotEnough();
+            ShowPopupNotEnough();
             return;
         }
 
-        // Trừ 1 clam không ghi DB nếu cần: DBManager.ConsumeCurrencyNoSave(currencyID, DEFAULT_PRICE_PER_REPLAY);
         DBManager.ConsumeCurrency(currencyID, DEFAULT_PRICE_PER_REPLAY);
 
         int afterDeduct = DBManager.GetCurrency(currencyID);
