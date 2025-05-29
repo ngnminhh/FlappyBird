@@ -3,10 +3,15 @@
 public class BomController : MonoBehaviour
 {
     public float moveSpeed = 10f;
-    public float triggerDistance = 5f; // Khoảng cách để ống bắt đầu di chuyển
-    public Transform player; // Gán từ Unity Editor hoặc tự tìm
+    public float triggerDistance = 5f;
+    public Transform player;
 
     private Camera mainCamera;
+    private bool isDragging = false;
+    private float startMouseY;
+
+    public float minY = -3f;
+    public float maxY = 3f;
 
     private void Start()
     {
@@ -22,16 +27,39 @@ public class BomController : MonoBehaviour
     {
         if (player == null) return;
 
-        // Chỉ di chuyển nếu player đến gần (theo trục X)
         if (transform.position.x - player.position.x < triggerDistance)
         {
-            if (Input.GetMouseButton(0))
-            {
-                Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-                Vector3 currentPosition = transform.position;
+            Vector3 mousePos = Input.mousePosition;
 
-                currentPosition.y = Mathf.Lerp(currentPosition.y, mousePosition.y, moveSpeed * Time.deltaTime);
+            // ✅ Bắt đầu thao tác ở bất kỳ đâu
+            if (Input.GetMouseButtonDown(0))
+            {
+                isDragging = true;
+                startMouseY = mousePos.y;
+            }
+
+            // Đang giữ và vuốt
+            if (Input.GetMouseButton(0) && isDragging)
+            {
+                float currentMouseY = mousePos.y;
+                float deltaY = currentMouseY - startMouseY;
+
+                Vector3 currentPosition = transform.position;
+                currentPosition.y += Mathf.Sign(deltaY) * moveSpeed * Time.deltaTime;
+
+                // Giới hạn vùng di chuyển
+                currentPosition.y = Mathf.Clamp(currentPosition.y, minY, maxY);
+
                 transform.position = currentPosition;
+
+                // Cập nhật để giữ cảm giác mượt
+                startMouseY = currentMouseY;
+            }
+
+            // Thả chuột => dừng thao tác
+            if (Input.GetMouseButtonUp(0))
+            {
+                isDragging = false;
             }
         }
     }

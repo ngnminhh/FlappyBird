@@ -158,6 +158,7 @@ MonoBehaviour:
   tutorialPanel: {fileID: 1058186708}
   audioManager: {fileID: 1554273876}
   uiManager: {fileID: 2044519830}
+  sfxDefeatAudioClip: {fileID: 8300000, guid: b293c30767e384788855c648cdf2b37b, type: 3}
 --- !u!4 &148561157
 Transform:
   m_ObjectHideFlags: 0
@@ -7337,6 +7338,7 @@ MonoBehaviour:
   speed: 2
   floatAmplitude: 0.5
   floatFrequency: 2
+  smoothSpeed: 2
 --- !u!1 &1443033620
 GameObject:
   m_ObjectHideFlags: 0

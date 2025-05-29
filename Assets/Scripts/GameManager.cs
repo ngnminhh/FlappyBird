@@ -17,18 +17,21 @@ public class GameManager : MonoBehaviour
     public GameObject tutorialPanel;
     public AudioManager audioManager;
 
-    public SCR_UIManager uiManager; // THÊM tham chiếu tới UI Manager
+    public SCR_UIManager uiManager; 
 
-    // ===== THÊM CHO ÂM THANH THUA =====
-    public AudioClip sfxDefeatAudioClip;         // Âm thanh báo thua
-    private AudioSource defeatSfxSource;         // AudioSource riêng cho FX defeat
-    // ==================================
+    
+    public AudioClip sfxDefeatAudioClip;         
+    private AudioSource defeatSfxSource;
 
+    public static GameManager Instance { get; private set; }
+
+    public int CurrentScore => score;
     private int score;
     private int highScore;
 
     private void Awake()
     {
+        Instance = this;
         Application.targetFrameRate = 60;
         highScore = PlayerPrefs.GetInt("HighScore", 0);
 
@@ -143,8 +146,7 @@ public class GameManager : MonoBehaviour
 
         if (player != null)
         {
-            typeof(Player).GetField("direction", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                ?.SetValue(player, Vector3.zero);
+            typeof(Player).GetField("direction", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
         }
         if (audioManager != null && audioManager.musicAudioSource != null)
             audioManager.musicAudioSource.Play();
@@ -162,8 +164,8 @@ public class GameManager : MonoBehaviour
         {
             player.enabled = true;
             player.transform.position = Vector3.zero;
-            typeof(Player).GetField("direction", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                ?.SetValue(player, Vector3.zero);
+            typeof(Player).GetField("direction", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                
         }
         if (audioManager != null && audioManager.musicAudioSource != null)
             audioManager.musicAudioSource.Play();
@@ -201,7 +203,7 @@ public class GameManager : MonoBehaviour
         else
             Debug.LogWarning("AudioManager or musicAudioSource is not assigned!");
 
-        // PHÁT NHẠC THUA
+        // PHÁT THUA
         if (sfxDefeatAudioClip != null && defeatSfxSource != null)
         {
             defeatSfxSource.PlayOneShot(sfxDefeatAudioClip);
