@@ -15,8 +15,14 @@ public class GameManager : MonoBehaviour
 
     public GameObject popupNotEnough;
     public GameObject tutorialPanel;
+    public AudioManager audioManager;
 
     public SCR_UIManager uiManager; // THÊM tham chiếu tới UI Manager
+
+    // ===== THÊM CHO ÂM THANH THUA =====
+    public AudioClip sfxDefeatAudioClip;         // Âm thanh báo thua
+    private AudioSource defeatSfxSource;         // AudioSource riêng cho FX defeat
+    // ==================================
 
     private int score;
     private int highScore;
@@ -31,8 +37,13 @@ public class GameManager : MonoBehaviour
         else
             Debug.LogError("highScoreText is not assigned!");
 
+        // Khởi tạo AudioSource cho defeat sound
+        defeatSfxSource = GetComponent<AudioSource>();
+        if (defeatSfxSource == null)
+            defeatSfxSource = gameObject.AddComponent<AudioSource>();
+
         Pause();
-        ShowTutorialIfFirstTime(); // THÊM dòng này để kiểm tra tutorial
+        ShowTutorialIfFirstTime();
     }
 
     public void ShowTutorialIfFirstTime()
@@ -45,7 +56,6 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetInt("HasSeenTutorial", 1);
                 PlayerPrefs.Save();
 
-                // Ẩn Store nếu có
                 if (uiManager != null)
                     uiManager.HideStore();
                 else
@@ -63,7 +73,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public void ShowTutorial()
     {
         if (tutorialPanel != null)
@@ -72,13 +81,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Gọi hàm này từ nút đóng Tutorial
     public void CloseTutorial()
     {
         if (tutorialPanel != null)
             tutorialPanel.SetActive(false);
-
-        
     }
 
     public void HidePopupNotEnough()
@@ -140,6 +146,9 @@ public class GameManager : MonoBehaviour
             typeof(Player).GetField("direction", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 ?.SetValue(player, Vector3.zero);
         }
+        if (audioManager != null && audioManager.musicAudioSource != null)
+            audioManager.musicAudioSource.Play();
+
     }
 
     public void ContinueGame()
@@ -156,6 +165,9 @@ public class GameManager : MonoBehaviour
             typeof(Player).GetField("direction", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 ?.SetValue(player, Vector3.zero);
         }
+        if (audioManager != null && audioManager.musicAudioSource != null)
+            audioManager.musicAudioSource.Play();
+
     }
 
     public void Pause()
@@ -183,6 +195,24 @@ public class GameManager : MonoBehaviour
         if (gameOver != null) gameOver.SetActive(true);
         if (Play_BTN != null) Play_BTN.SetActive(true);
 
+        // Dừng nhạc nền
+        if (audioManager != null && audioManager.musicAudioSource != null)
+            audioManager.musicAudioSource.Stop();
+        else
+            Debug.LogWarning("AudioManager or musicAudioSource is not assigned!");
+
+        // PHÁT NHẠC THUA
+        if (sfxDefeatAudioClip != null && defeatSfxSource != null)
+        {
+            defeatSfxSource.PlayOneShot(sfxDefeatAudioClip);
+        }
+        else
+        {
+            Debug.LogWarning("Defeat SFX or AudioSource is missing!");
+        }
+
+        
+        
         Pause();
     }
 
