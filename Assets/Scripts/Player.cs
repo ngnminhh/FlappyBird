@@ -60,7 +60,9 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Obstacle"))
         {
             FindFirstObjectByType<GameManager>().GameOver();
+
             dieEffectCoroutine = StartCoroutine(DieEffectCoroutine());
+
         }
         else if (other.CompareTag("Scoring"))
         {

@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI highScoreText;
     public GameObject Play_BTN;
     public GameObject gameOver;
+    public GameObject pause_BTN;
+    public GameObject pausePanel;
     public int DEFAULT_PRICE_PER_REPLAY = 1;
 
     public GameObject popupNotEnough;
@@ -56,6 +58,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        pausePanel.SetActive(false);
         if (gameOver != null)
         {
             gameOver.SetActive(false);
@@ -149,6 +152,8 @@ public class GameManager : MonoBehaviour
         uiManager.HideStoreButton();
         tutorialPanel.SetActive(false);
         tutorial_BTN.SetActive(false);
+        pausePanel.SetActive(false);
+        pause_BTN.SetActive(true);
         if (highScoreText != null)
             highScoreText.gameObject.SetActive(false);
 
@@ -197,15 +202,62 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         if (player != null)
             player.enabled = false;
+        pausePanel.SetActive(true);
+        if (audioManager != null && audioManager.musicAudioSource != null)
+            audioManager.musicAudioSource.Stop();
+    }
+    public void Pause_gameover()
+    {
+        Time.timeScale = 0f;
+        if (player != null)
+            player.enabled = false;
+        pausePanel.SetActive(false);
+        if (audioManager != null && audioManager.musicAudioSource != null)
+            audioManager.musicAudioSource.Stop();
+    }
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+        if (player != null)
+            player.enabled = true;
+        pausePanel.SetActive(false);
     }
 
     public void GameOver()
     {
         StartCoroutine(GameOverRoutine());
+        pausePanel.SetActive(false);
+        pause_BTN.SetActive(false);
+    }
+    public void HomeGame()
+    {
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.Save();
+        }
+
+        if (highScoreText != null)
+        {
+            highScoreText.text = "High Score: " + highScore;
+            highScoreText.gameObject.SetActive(true);
+        }
+
+        if (gameOver != null) gameOver.SetActive(false);
+        if (Play_BTN != null) Play_BTN.SetActive(true);
+
+        pause_BTN.SetActive(false);
+        tutorial_BTN.SetActive(true);
+        uiManager.ShowStoreButton();
+        pausePanel.SetActive(false);
+        if (audioManager != null && audioManager.musicAudioSource != null)
+            audioManager.musicAudioSource.Play();
     }
 
     private IEnumerator GameOverRoutine()
     {
+        
         if (score > highScore)
         {
             highScore = score;
@@ -229,7 +281,7 @@ public class GameManager : MonoBehaviour
             defeatSfxSource.PlayOneShot(sfxDefeatAudioClip);
 
         yield return new WaitForSeconds(1f);
-        Pause();
+        Pause_gameover();
     }
 
     public void IncreaseScore()
