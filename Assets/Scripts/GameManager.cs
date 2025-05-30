@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 using UniPay;
-using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,12 +15,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject popupNotEnough;
     public GameObject tutorialPanel;
+    public GameObject tutorial_BTN;
     public AudioManager audioManager;
+    public SCR_UIManager uiManager;
 
-    public SCR_UIManager uiManager; 
-
-    
-    public AudioClip sfxDefeatAudioClip;         
+    public AudioClip sfxDefeatAudioClip;
     private AudioSource defeatSfxSource;
 
     public static GameManager Instance { get; private set; }
@@ -39,8 +38,15 @@ public class GameManager : MonoBehaviour
             highScoreText.gameObject.SetActive(false);
         else
             Debug.LogError("highScoreText is not assigned!");
-
-        // Khởi tạo AudioSource cho defeat sound
+        if (gameOver != null)
+        {
+            gameOver.SetActive(false);
+            Debug.Log("GameOver UI đã bị ẩn thành công.");
+        }
+        else
+        {                                   
+            Debug.LogError("gameOver UI chưa được gán!");
+        }
         defeatSfxSource = GetComponent<AudioSource>();
         if (defeatSfxSource == null)
             defeatSfxSource = gameObject.AddComponent<AudioSource>();
@@ -48,7 +54,18 @@ public class GameManager : MonoBehaviour
         Pause();
         ShowTutorialIfFirstTime();
     }
-
+    private void Start()
+    {
+        if (gameOver != null)
+        {
+            gameOver.SetActive(false);
+            Debug.Log("GameOver UI đã bị ẩn trong Start().");
+        }
+        else
+        {
+            Debug.LogError("gameOver UI chưa được gán!");
+        }
+    }
     public void ShowTutorialIfFirstTime()
     {
         if (!PlayerPrefs.HasKey("HasSeenTutorial"))
@@ -59,6 +76,8 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetInt("HasSeenTutorial", 1);
                 PlayerPrefs.Save();
 
+                if (uiManager != null)
+                    uiManager.HideStoreButton();
                 if (uiManager != null)
                     uiManager.HideStore();
                 else
@@ -75,82 +94,83 @@ public class GameManager : MonoBehaviour
                 tutorialPanel.SetActive(false);
         }
     }
-
     public void ShowTutorial()
     {
         if (tutorialPanel != null)
         {
             tutorialPanel.SetActive(true);
+
+            Animator[] anims = tutorialPanel.GetComponentsInChildren<Animator>(true);
+            foreach (var anim in anims)
+            {
+                anim.updateMode = AnimatorUpdateMode.UnscaledTime;
+                anim.enabled = true;
+            }
         }
+
+        if (uiManager != null)
+            uiManager.HideStoreButton();
     }
+
+  
 
     public void CloseTutorial()
     {
         if (tutorialPanel != null)
             tutorialPanel.SetActive(false);
+        if (uiManager != null)
+            uiManager.ShowStoreButton();
     }
 
     public void HidePopupNotEnough()
     {
         if (popupNotEnough != null)
-        {
             popupNotEnough.SetActive(false);
-        }
     }
 
     public void ShowPopupNotEnough()
     {
         if (popupNotEnough != null)
-        {
             popupNotEnough.SetActive(true);
-        }
     }
 
     public void Play()
     {
-        if (Play_BTN == null)
+        if (Play_BTN == null || gameOver == null || scoreText == null)
         {
-            Debug.LogError("Play_BTN is NULL! Hãy kéo nút Play vào GameManager trong Inspector.");
-            return;
-        }
-
-        if (gameOver == null)
-        {
-            Debug.LogError("gameOver is NULL!");
+            Debug.LogError("Play_BTN, gameOver hoặc scoreText chưa được gán trong Inspector!");
             return;
         }
 
         score = 0;
-        if (scoreText != null)
-            scoreText.text = score.ToString();
-        else
-            Debug.LogError("scoreText is not assigned!");
-
+        scoreText.text = score.ToString();
         Play_BTN.SetActive(false);
         gameOver.SetActive(false);
+        uiManager.HideStoreButton();
+        tutorialPanel.SetActive(false);
+        tutorial_BTN.SetActive(false);
         if (highScoreText != null)
             highScoreText.gameObject.SetActive(false);
 
         Time.timeScale = 1f;
 
         if (player != null)
+        {
+            player.ResetPlayer(); // Gọi reset player
             player.enabled = true;
+        }
         else
+        {
             Debug.LogError("player is not assigned!");
-
-        Boms[] boms = FindObjectsOfType<Boms>();
-        for (int i = 0; i < boms.Length; i++)
-        {
-            Destroy(boms[i].gameObject);
         }
 
-        if (player != null)
+        foreach (var bom in FindObjectsOfType<Boms>())
         {
-            typeof(Player).GetField("direction", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            Destroy(bom.gameObject);
         }
+
         if (audioManager != null && audioManager.musicAudioSource != null)
             audioManager.musicAudioSource.Play();
-
     }
 
     public void ContinueGame()
@@ -160,13 +180,13 @@ public class GameManager : MonoBehaviour
         if (highScoreText != null) highScoreText.gameObject.SetActive(false);
 
         Time.timeScale = 1f;
+
         if (player != null)
         {
+            player.ResetPlayer();
             player.enabled = true;
-            player.transform.position = Vector3.zero;
-            typeof(Player).GetField("direction", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                
         }
+
         if (audioManager != null && audioManager.musicAudioSource != null)
             audioManager.musicAudioSource.Play();
 
@@ -181,6 +201,11 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        StartCoroutine(GameOverRoutine());
+    }
+
+    private IEnumerator GameOverRoutine()
+    {
         if (score > highScore)
         {
             highScore = score;
@@ -190,31 +215,20 @@ public class GameManager : MonoBehaviour
 
         if (highScoreText != null)
         {
-            highScoreText.text = "High Score: " + highScore.ToString();
+            highScoreText.text = "High Score: " + highScore;
             highScoreText.gameObject.SetActive(true);
         }
 
         if (gameOver != null) gameOver.SetActive(true);
         if (Play_BTN != null) Play_BTN.SetActive(true);
 
-        // Dừng nhạc nền
         if (audioManager != null && audioManager.musicAudioSource != null)
             audioManager.musicAudioSource.Stop();
-        else
-            Debug.LogWarning("AudioManager or musicAudioSource is not assigned!");
 
-        // PHÁT THUA
         if (sfxDefeatAudioClip != null && defeatSfxSource != null)
-        {
             defeatSfxSource.PlayOneShot(sfxDefeatAudioClip);
-        }
-        else
-        {
-            Debug.LogWarning("Defeat SFX or AudioSource is missing!");
-        }
 
-        
-        
+        yield return new WaitForSeconds(1f);
         Pause();
     }
 
@@ -241,7 +255,6 @@ public class GameManager : MonoBehaviour
         }
 
         DBManager.ConsumeCurrency(currencyID, DEFAULT_PRICE_PER_REPLAY);
-
         int afterDeduct = DBManager.GetCurrency(currencyID);
         Debug.Log($"Đã trừ {DEFAULT_PRICE_PER_REPLAY} {currencyID}, còn lại: {afterDeduct}");
 

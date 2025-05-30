@@ -31,6 +31,7 @@ public class SCR_UIManager : MonoBehaviour
         ON_STORE_BUTTON_CLICKED?.Invoke();
         PFB_StorePopup.transform.SetAsLastSibling();
         PFB_StorePopup.SetActive(true);
+        
     }
 
     public void HideStore()
