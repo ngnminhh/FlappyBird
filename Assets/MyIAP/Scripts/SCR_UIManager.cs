@@ -12,6 +12,9 @@ public class SCR_UIManager : MonoBehaviour
     [SerializeField] private GameObject panelGameOver;
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject highScoreText;
+    [SerializeField] private GameObject titleBG;
+    [SerializeField] private GameObject pauseBTN;
+
 
     public Action ON_STORE_BUTTON_CLICKED;
     public Action ON_STORE_CLOSED;
@@ -27,7 +30,8 @@ public class SCR_UIManager : MonoBehaviour
         panelGameOver?.SetActive(false);
         playButton?.SetActive(false);
         highScoreText?.SetActive(false);
-
+        titleBG.SetActive(false);
+        pauseBTN?.SetActive(false);
         ON_STORE_BUTTON_CLICKED?.Invoke();
         PFB_StorePopup.transform.SetAsLastSibling();
         PFB_StorePopup.SetActive(true);

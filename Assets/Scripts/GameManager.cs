@@ -13,11 +13,13 @@ public class GameManager : MonoBehaviour
     public GameObject gameOver;
     public GameObject pause_BTN;
     public GameObject pausePanel;
+    public GameObject titleBG;
     public int DEFAULT_PRICE_PER_REPLAY = 1;
 
     public GameObject popupNotEnough;
     public GameObject tutorialPanel;
     public GameObject tutorial_BTN;
+    public GameObject restart_BTN;
     public AudioManager audioManager;
     public SCR_UIManager uiManager;
 
@@ -58,6 +60,8 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        pause_BTN.SetActive(false);
+
         pausePanel.SetActive(false);
         if (gameOver != null)
         {
@@ -75,6 +79,8 @@ public class GameManager : MonoBehaviour
         {
             if (tutorialPanel != null)
             {
+                restart_BTN.SetActive(false);
+                pause_BTN.SetActive(false);
                 tutorialPanel.SetActive(true);
                 PlayerPrefs.SetInt("HasSeenTutorial", 1);
                 PlayerPrefs.Save();
@@ -101,8 +107,9 @@ public class GameManager : MonoBehaviour
     {
         if (tutorialPanel != null)
         {
+            restart_BTN.SetActive(false);
             tutorialPanel.SetActive(true);
-
+            pause_BTN.SetActive(false);
             Animator[] anims = tutorialPanel.GetComponentsInChildren<Animator>(true);
             foreach (var anim in anims)
             {
@@ -123,6 +130,7 @@ public class GameManager : MonoBehaviour
             tutorialPanel.SetActive(false);
         if (uiManager != null)
             uiManager.ShowStoreButton();
+
     }
 
     public void HidePopupNotEnough()
@@ -144,7 +152,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Play_BTN, gameOver hoặc scoreText chưa được gán trong Inspector!");
             return;
         }
-
+        titleBG.SetActive(false);
         score = 0;
         scoreText.text = score.ToString();
         Play_BTN.SetActive(false);
@@ -183,7 +191,7 @@ public class GameManager : MonoBehaviour
         if (Play_BTN != null) Play_BTN.SetActive(false);
         if (gameOver != null) gameOver.SetActive(false);
         if (highScoreText != null) highScoreText.gameObject.SetActive(false);
-
+        pause_BTN.SetActive (true);
         Time.timeScale = 1f;
 
         if (player != null)
@@ -208,6 +216,7 @@ public class GameManager : MonoBehaviour
     }
     public void Pause_gameover()
     {
+
         Time.timeScale = 0f;
         if (player != null)
             player.enabled = false;
@@ -225,6 +234,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        restart_BTN.SetActive(true);
         StartCoroutine(GameOverRoutine());
         pausePanel.SetActive(false);
         pause_BTN.SetActive(false);
@@ -251,6 +261,7 @@ public class GameManager : MonoBehaviour
         tutorial_BTN.SetActive(true);
         uiManager.ShowStoreButton();
         pausePanel.SetActive(false);
+        titleBG.SetActive(true);
         if (audioManager != null && audioManager.musicAudioSource != null)
             audioManager.musicAudioSource.Play();
     }
