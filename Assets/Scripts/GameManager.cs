@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UniPay;
 using System.Collections;
 
 public class GameManager : MonoBehaviour
@@ -15,13 +14,10 @@ public class GameManager : MonoBehaviour
     public GameObject pausePanel;
     public GameObject titleBG;
     public int DEFAULT_PRICE_PER_REPLAY = 1;
-
-    public GameObject popupNotEnough;
     public GameObject tutorialPanel;
     public GameObject tutorial_BTN;
-    public GameObject restart_BTN;
     public AudioManager audioManager;
-    public SCR_UIManager uiManager;
+    
 
     public AudioClip sfxDefeatAudioClip;
     private AudioSource defeatSfxSource;
@@ -79,18 +75,13 @@ public class GameManager : MonoBehaviour
         {
             if (tutorialPanel != null)
             {
-                restart_BTN.SetActive(false);
+                
                 pause_BTN.SetActive(false);
                 tutorialPanel.SetActive(true);
                 PlayerPrefs.SetInt("HasSeenTutorial", 1);
                 PlayerPrefs.Save();
 
-                if (uiManager != null)
-                    uiManager.HideStoreButton();
-                if (uiManager != null)
-                    uiManager.HideStore();
-                else
-                    Debug.LogWarning("uiManager is not assigned!");
+                
             }
             else
             {
@@ -107,7 +98,7 @@ public class GameManager : MonoBehaviour
     {
         if (tutorialPanel != null)
         {
-            restart_BTN.SetActive(false);
+           
             tutorialPanel.SetActive(true);
             pause_BTN.SetActive(false);
             tutorial_BTN.SetActive(false);
@@ -119,8 +110,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (uiManager != null)
-            uiManager.HideStoreButton();
+        
     }
 
   
@@ -129,22 +119,9 @@ public class GameManager : MonoBehaviour
     {
         if (tutorialPanel != null)
             tutorialPanel.SetActive(false);
-        if (uiManager != null)
-            uiManager.ShowStoreButton();
+       
         tutorial_BTN.SetActive(true);
 
-    }
-
-    public void HidePopupNotEnough()
-    {
-        if (popupNotEnough != null)
-            popupNotEnough.SetActive(false);
-    }
-
-    public void ShowPopupNotEnough()
-    {
-        if (popupNotEnough != null)
-            popupNotEnough.SetActive(true);
     }
 
     public void Play()
@@ -159,7 +136,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = score.ToString();
         Play_BTN.SetActive(false);
         gameOver.SetActive(false);
-        uiManager.HideStoreButton();
+        
         tutorialPanel.SetActive(false);
         tutorial_BTN.SetActive(false);
         pausePanel.SetActive(false);
@@ -236,7 +213,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        restart_BTN.SetActive(true);
+       
         StartCoroutine(GameOverRoutine());
         pausePanel.SetActive(false);
         pause_BTN.SetActive(false);
@@ -261,7 +238,7 @@ public class GameManager : MonoBehaviour
 
         pause_BTN.SetActive(false);
         tutorial_BTN.SetActive(true);
-        uiManager.ShowStoreButton();
+        
         pausePanel.SetActive(false);
         titleBG.SetActive(true);
         if (audioManager != null && audioManager.musicAudioSource != null)
@@ -304,25 +281,5 @@ public class GameManager : MonoBehaviour
             scoreText.text = score.ToString();
     }
 
-    public void CheckScore()
-    {
-        StopAllCoroutines();
-
-        const string currencyID = "clam";
-        int currentClam = DBManager.GetCurrency(currencyID);
-        Debug.Log($"Số {currencyID} hiện tại: {currentClam}");
-
-        if (currentClam < DEFAULT_PRICE_PER_REPLAY)
-        {
-            Debug.Log($"Không đủ {currencyID}, bạn đang có {currentClam}");
-            ShowPopupNotEnough();
-            return;
-        }
-
-        DBManager.ConsumeCurrency(currencyID, DEFAULT_PRICE_PER_REPLAY);
-        int afterDeduct = DBManager.GetCurrency(currencyID);
-        Debug.Log($"Đã trừ {DEFAULT_PRICE_PER_REPLAY} {currencyID}, còn lại: {afterDeduct}");
-
-        ContinueGame();
-    }
+    
 }
