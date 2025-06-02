@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class SCR_UIManager : MonoBehaviour
 {
+    // Key dùng để kiểm tra lần chơi đầu
+    const string FIRST_PLAY_KEY = "HasPlayedBefore";
+
     [SerializeField] public GameObject PFB_StorePopup;
 
     [SerializeField] public Button btnStore;
@@ -44,10 +47,27 @@ public class SCR_UIManager : MonoBehaviour
         PFB_StorePopup.SetActive(false);
 
         // Hiện lại các UI khi đóng Store
-        panelGameOver?.SetActive(true);
+        titleBG.SetActive(true);
         playButton?.SetActive(true);
         highScoreText?.SetActive(true);
+
+        // Kiểm tra nếu là người mới thì không hiển thị GameOver
+        bool isFirstTimePlayer = PlayerPrefs.GetInt("HasPlayedBefore", 0) == 0;
+
+        if (isFirstTimePlayer)
+        {
+            // Ẩn panelGameOver nếu người mới
+            panelGameOver?.SetActive(false);
+            Debug.Log("Lần đầu chơi - Không hiển thị GameOver");
+        }
+        else
+        {
+            panelGameOver?.SetActive(true);
+            Debug.Log("Đã chơi trước đó - Hiện GameOver");
+        }
     }
+
+
 
     public void ShowStoreButton()
     {

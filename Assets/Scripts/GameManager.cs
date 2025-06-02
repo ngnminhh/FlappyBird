@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour
             restart_BTN.SetActive(false);
             tutorialPanel.SetActive(true);
             pause_BTN.SetActive(false);
+            tutorial_BTN.SetActive(false);
             Animator[] anims = tutorialPanel.GetComponentsInChildren<Animator>(true);
             foreach (var anim in anims)
             {
@@ -130,6 +131,7 @@ public class GameManager : MonoBehaviour
             tutorialPanel.SetActive(false);
         if (uiManager != null)
             uiManager.ShowStoreButton();
+        tutorial_BTN.SetActive(true);
 
     }
 
