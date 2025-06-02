@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      giohang_hang2_0: -887025958010088357
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
