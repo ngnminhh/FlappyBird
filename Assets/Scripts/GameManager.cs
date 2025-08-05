@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject popupNotEnough;
     //public GameObject tutorialPanel;
-    public GameObject tutorial_BTN;
+    //public GameObject tutorial_BTN;
     public GameObject restart_BTN;
     public AudioManager audioManager;
     public SCR_UIManager uiManager;
@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
         gameOver.SetActive(false);
         uiManager.HideStoreButton();
         //tutorialPanel.SetActive(false);
-        tutorial_BTN.SetActive(false);
+        //tutorial_BTN.SetActive(false);
         pausePanel.SetActive(false);
         pause_BTN.SetActive(true);
         if (highScoreText != null)
@@ -260,7 +260,7 @@ public class GameManager : MonoBehaviour
         if (Play_BTN != null) Play_BTN.SetActive(true);
 
         pause_BTN.SetActive(false);
-        tutorial_BTN.SetActive(true);
+        //tutorial_BTN.SetActive(true);
         uiManager.ShowStoreButton();
         pausePanel.SetActive(false);
         titleBG.SetActive(true);
@@ -308,7 +308,7 @@ public class GameManager : MonoBehaviour
     {
         StopAllCoroutines();
 
-        const string currencyID = "clam";
+        const string currencyID = "ticket";
         int currentClam = DBManager.GetCurrency(currencyID);
         Debug.Log($"Số {currencyID} hiện tại: {currentClam}");
 
