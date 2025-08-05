@@ -40,6 +40,9 @@ MonoBehaviour:
   - referenceID: ff2c9514-6721-44c5-9d41-e7dfec74e19a
     ID: dolphin
     storeIDs: []
+  - referenceID: fde7f932-62cc-4617-8b00-f87740121738
+    ID: buff
+    storeIDs: []
   currencyList:
   - referenceID: 220be08c-be6d-4e63-a0c7-48b629257b77
     ID: coins
@@ -47,10 +50,10 @@ MonoBehaviour:
     maxAmount: 0
     icon: {fileID: 21300000, guid: 815c2d1cc82c7f3468708b31017e1ab2, type: 3}
   - referenceID: 8c1aaa76-ea8e-49bc-8fae-78cf44d14848
-    ID: clam
-    baseAmount: 10
+    ID: ticket
+    baseAmount: 99
     maxAmount: 0
-    icon: {fileID: 3043432724611504252, guid: 55456a61d867fda44b5ca22070bdcbca, type: 3}
+    icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
   productList:
   - referenceID: c5ea337a-d2d6-456f-89f5-e8c664caeda8
     ID: bundle
@@ -984,6 +987,535 @@ MonoBehaviour:
       label: 
     nextUpgrade:
       rid: -2
+  - referenceID: 21c564e1-84aa-4de2-8f88-cee7d564c2b7
+    ID: product_item_1
+    storeIDs: []
+    category:
+      rid: 2228272557282558133
+    type: 0
+    title: Ticketx10
+    description: Please buy more tickets to get in.
+    discount: 0
+    fetch: 1
+    icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+    priceList:
+    - type: 0
+      currency:
+        rid: -2
+      product:
+        rid: -2
+      amount: 0
+      realPrice: $0.19
+    rewardList:
+    - type: 1
+      currency:
+        rid: 2228272557282558134
+      product:
+        rid: -2
+      amount: 10
+      realPrice: 
+    requirement:
+      pairs: []
+      label: 
+    nextUpgrade:
+      rid: -2
+  - referenceID: 10f436c6-a68c-4db9-ab95-e5aae71cbb3c
+    ID: product_item_2
+    storeIDs: []
+    category:
+      rid: 2228272557282558140
+    type: 0
+    title: Ticketx20
+    description: Please buy more tickets to get in.
+    discount: 0
+    fetch: 1
+    icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+    priceList:
+    - type: 0
+      currency:
+        rid: -2
+      product:
+        rid: -2
+      amount: 0
+      realPrice: $0.29
+    rewardList:
+    - type: 1
+      currency:
+        rid: 2228272557282558141
+      product:
+        rid: -2
+      amount: 20
+      realPrice: 
+    requirement:
+      pairs: []
+      label: 
+    nextUpgrade:
+      rid: -2
+  - referenceID: 5847fec5-8e31-451b-91fe-55fac973adc1
+    ID: product_item_3
+    storeIDs: []
+    category:
+      rid: 2228272557282558140
+    type: 0
+    title: Ticketx30
+    description: Please buy more tickets to get in.
+    discount: 0
+    fetch: 1
+    icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+    priceList:
+    - type: 0
+      currency:
+        rid: -2
+      product:
+        rid: -2
+      amount: 0
+      realPrice: $0.49
+    rewardList:
+    - type: 1
+      currency:
+        rid: 2228272557282558141
+      product:
+        rid: -2
+      amount: 30
+      realPrice: 
+    requirement:
+      pairs: []
+      label: 
+    nextUpgrade:
+      rid: -2
+  - referenceID: d68c7c3a-398f-462d-ba39-bd3ae4db49d2
+    ID: product_item_4
+    storeIDs: []
+    category:
+      rid: 2228272557282558140
+    type: 0
+    title: Ticketx40
+    description: Please buy more tickets to get in.
+    discount: 0
+    fetch: 1
+    icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+    priceList:
+    - type: 0
+      currency:
+        rid: -2
+      product:
+        rid: -2
+      amount: 0
+      realPrice: $0.99
+    rewardList:
+    - type: 1
+      currency:
+        rid: 2228272557282558141
+      product:
+        rid: -2
+      amount: 10
+      realPrice: 
+    requirement:
+      pairs: []
+      label: 
+    nextUpgrade:
+      rid: -2
+  - referenceID: 2c740157-2f0b-45d2-8aae-64c9c4b6f88f
+    ID: product_item_5
+    storeIDs: []
+    category:
+      rid: 2228272557282558140
+    type: 0
+    title: Ticketx50
+    description: Please buy more tickets to get in.
+    discount: 0
+    fetch: 1
+    icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+    priceList:
+    - type: 0
+      currency:
+        rid: -2
+      product:
+        rid: -2
+      amount: 0
+      realPrice: $1.99
+    rewardList:
+    - type: 1
+      currency:
+        rid: 2228272557282558141
+      product:
+        rid: -2
+      amount: 50
+      realPrice: 
+    requirement:
+      pairs: []
+      label: 
+    nextUpgrade:
+      rid: -2
+  - referenceID: fe35adb6-1fff-4d05-9a65-67eca665398b
+    ID: product_item_6
+    storeIDs: []
+    category:
+      rid: 2228272557282558140
+    type: 0
+    title: Ticketx100
+    description: Please buy more tickets to get in.
+    discount: 0
+    fetch: 1
+    icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+    priceList:
+    - type: 0
+      currency:
+        rid: -2
+      product:
+        rid: -2
+      amount: 0
+      realPrice: $4.99
+    rewardList:
+    - type: 1
+      currency:
+        rid: 2228272557282558141
+      product:
+        rid: -2
+      amount: 100
+      realPrice: 
+    requirement:
+      pairs: []
+      label: 
+    nextUpgrade:
+      rid: -2
+  - referenceID: a9b9f2f1-8435-466d-bb52-93504fa346de
+    ID: product_item_7
+    storeIDs: []
+    category:
+      rid: 2228272557282558140
+    type: 0
+    title: Ticketx200
+    description: Please buy more tickets to get in.
+    discount: 0
+    fetch: 1
+    icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+    priceList:
+    - type: 0
+      currency:
+        rid: -2
+      product:
+        rid: -2
+      amount: 0
+      realPrice: $7.99
+    rewardList:
+    - type: 1
+      currency:
+        rid: 2228272557282558141
+      product:
+        rid: -2
+      amount: 200
+      realPrice: 
+    requirement:
+      pairs: []
+      label: 
+    nextUpgrade:
+      rid: -2
+  - referenceID: 02cf334f-e957-4802-be8a-3150af674e82
+    ID: product_item_8
+    storeIDs: []
+    category:
+      rid: 2228272557282558140
+    type: 0
+    title: Ticketx500
+    description: Please buy more tickets to get in.
+    discount: 0
+    fetch: 1
+    icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+    priceList:
+    - type: 0
+      currency:
+        rid: -2
+      product:
+        rid: -2
+      amount: 0
+      realPrice: $9.99
+    rewardList:
+    - type: 1
+      currency:
+        rid: 2228272557282558141
+      product:
+        rid: -2
+      amount: 500
+      realPrice: 
+    requirement:
+      pairs: []
+      label: 
+    nextUpgrade:
+      rid: -2
+  - referenceID: 7d02d358-a294-4a6e-963d-4cbc65995a0d
+    ID: sub_pack_1
+    storeIDs: []
+    category:
+      rid: 2228272557282558140
+    type: 2
+    title: Subscription pack 1
+    description: Please buy more tickets to get in.
+    discount: 0
+    fetch: 1
+    icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+    priceList:
+    - type: 0
+      currency:
+        rid: -2
+      product:
+        rid: -2
+      amount: 0
+      realPrice: $1.99
+    rewardList:
+    - type: 2
+      currency:
+        rid: -2
+      product:
+        rid: 2228272557282558142
+      amount: 1
+      realPrice: 
+    - type: 1
+      currency:
+        rid: 2228272557282558141
+      product:
+        rid: -2
+      amount: 5
+      realPrice: 
+    requirement:
+      pairs: []
+      label: 
+    nextUpgrade:
+      rid: -2
+  - referenceID: 14f1b13b-43fd-48fe-af4b-be4584ee4c29
+    ID: sub_pack_2
+    storeIDs: []
+    category:
+      rid: 2228272557282558140
+    type: 2
+    title: Subscription pack 2
+    description: Please buy more tickets to get in.
+    discount: 0
+    fetch: 1
+    icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+    priceList:
+    - type: 0
+      currency:
+        rid: -2
+      product:
+        rid: -2
+      amount: 0
+      realPrice: $2.99
+    rewardList:
+    - type: 2
+      currency:
+        rid: -2
+      product:
+        rid: 2228272557282558143
+      amount: 1
+      realPrice: 
+    - type: 1
+      currency:
+        rid: 2228272557282558141
+      product:
+        rid: -2
+      amount: 10
+      realPrice: 
+    requirement:
+      pairs: []
+      label: 
+    nextUpgrade:
+      rid: -2
+  - referenceID: 45972ad2-4d67-47dc-b43a-9c6fd02c23db
+    ID: sub_pack_3
+    storeIDs: []
+    category:
+      rid: 2228272557282558140
+    type: 2
+    title: Subscription pack 3
+    description: Please buy more tickets to get in.
+    discount: 0
+    fetch: 1
+    icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+    priceList:
+    - type: 0
+      currency:
+        rid: -2
+      product:
+        rid: -2
+      amount: 0
+      realPrice: $4.99
+    rewardList:
+    - type: 2
+      currency:
+        rid: -2
+      product:
+        rid: 2228272557282558144
+      amount: 1
+      realPrice: 
+    - type: 1
+      currency:
+        rid: 2228272557282558141
+      product:
+        rid: -2
+      amount: 15
+      realPrice: 
+    requirement:
+      pairs: []
+      label: 
+    nextUpgrade:
+      rid: -2
+  - referenceID: d3b4ef1e-f74e-4d70-b2d4-7f3e70eab1e5
+    ID: sub_pack_4
+    storeIDs: []
+    category:
+      rid: 2228272557282558140
+    type: 2
+    title: Subscription pack 4
+    description: Please buy more tickets to get in.
+    discount: 0
+    fetch: 1
+    icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+    priceList:
+    - type: 0
+      currency:
+        rid: -2
+      product:
+        rid: -2
+      amount: 0
+      realPrice: $7.99
+    rewardList:
+    - type: 2
+      currency:
+        rid: -2
+      product:
+        rid: 2228272557282558145
+      amount: 1
+      realPrice: 
+    - type: 1
+      currency:
+        rid: 2228272557282558141
+      product:
+        rid: -2
+      amount: 20
+      realPrice: 
+    requirement:
+      pairs: []
+      label: 
+    nextUpgrade:
+      rid: -2
+  - referenceID: 00bc0b9b-8fd2-4ec8-b403-433fe9d59e85
+    ID: sub_pack_5
+    storeIDs: []
+    category:
+      rid: 2228272557282558140
+    type: 2
+    title: Subscription pack 5
+    description: Please buy more tickets to get in.
+    discount: 0
+    fetch: 1
+    icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+    priceList:
+    - type: 0
+      currency:
+        rid: -2
+      product:
+        rid: -2
+      amount: 0
+      realPrice: $9.99
+    rewardList:
+    - type: 2
+      currency:
+        rid: -2
+      product:
+        rid: 2228272557282558146
+      amount: 1
+      realPrice: 
+    - type: 1
+      currency:
+        rid: 2228272557282558141
+      product:
+        rid: -2
+      amount: 25
+      realPrice: 
+    requirement:
+      pairs: []
+      label: 
+    nextUpgrade:
+      rid: -2
+  - referenceID: 9503b47a-cfc7-499f-b197-059f3a1ff3ed
+    ID: sub_pack_6
+    storeIDs: []
+    category:
+      rid: 2228272557282558140
+    type: 2
+    title: Subscription pack 6
+    description: Please buy more tickets to get in.
+    discount: 0
+    fetch: 1
+    icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+    priceList:
+    - type: 0
+      currency:
+        rid: -2
+      product:
+        rid: -2
+      amount: 0
+      realPrice: $14.99
+    rewardList:
+    - type: 2
+      currency:
+        rid: -2
+      product:
+        rid: 2228272557282558147
+      amount: 1
+      realPrice: 
+    - type: 1
+      currency:
+        rid: 2228272557282558141
+      product:
+        rid: -2
+      amount: 30
+      realPrice: 
+    requirement:
+      pairs: []
+      label: 
+    nextUpgrade:
+      rid: -2
+  - referenceID: e3097210-10c1-4fa0-8a67-456ee7248566
+    ID: sub_pack_7
+    storeIDs: []
+    category:
+      rid: 2228272557282558140
+    type: 2
+    title: Subscription pack 7
+    description: Please buy more tickets to get in.
+    discount: 0
+    fetch: 1
+    icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+    priceList:
+    - type: 0
+      currency:
+        rid: -2
+      product:
+        rid: -2
+      amount: 0
+      realPrice: $19.99
+    rewardList:
+    - type: 2
+      currency:
+        rid: -2
+      product:
+        rid: 2228272557282558148
+      amount: 1
+      realPrice: 
+    - type: 1
+      currency:
+        rid: 2228272557282558141
+      product:
+        rid: -2
+      amount: 50
+      realPrice: 
+    requirement:
+      pairs: []
+      label: 
+    nextUpgrade:
+      rid: -2
   customStoreConfig:
     PayPal:
       currencyCode: USD
@@ -1731,3 +2263,325 @@ MonoBehaviour:
         referenceID: 57f68752-04ea-481c-8844-c9ca3141d336
         ID: Category 04
         storeIDs: []
+    - rid: 2228272557282558133
+      type: {class: IAPCategory, ns: UniPay, asm: Assembly-CSharp}
+      data:
+        referenceID: fde7f932-62cc-4617-8b00-f87740121738
+        ID: buff
+        storeIDs: []
+    - rid: 2228272557282558134
+      type: {class: IAPCurrency, ns: UniPay, asm: Assembly-CSharp}
+      data:
+        referenceID: 8c1aaa76-ea8e-49bc-8fae-78cf44d14848
+        ID: ticket
+        baseAmount: 99
+        maxAmount: 0
+        icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+    - rid: 2228272557282558140
+      type: {class: IAPCategory, ns: UniPay, asm: Assembly-CSharp}
+      data:
+        referenceID: fde7f932-62cc-4617-8b00-f87740121738
+        ID: buff
+        storeIDs: []
+    - rid: 2228272557282558141
+      type: {class: IAPCurrency, ns: UniPay, asm: Assembly-CSharp}
+      data:
+        referenceID: 8c1aaa76-ea8e-49bc-8fae-78cf44d14848
+        ID: ticket
+        baseAmount: 99
+        maxAmount: 0
+        icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+    - rid: 2228272557282558142
+      type: {class: IAPProduct, ns: UniPay, asm: Assembly-CSharp}
+      data:
+        referenceID: 7d02d358-a294-4a6e-963d-4cbc65995a0d
+        ID: sub_pack_1
+        storeIDs: []
+        category:
+          rid: 2228272557282558140
+        type: 2
+        title: Subscription pack 1
+        description: Please buy more tickets to get in.
+        discount: 0
+        fetch: 1
+        icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+        priceList:
+        - type: 0
+          currency:
+            rid: -2
+          product:
+            rid: -2
+          amount: 0
+          realPrice: $1.99
+        rewardList:
+        - type: 2
+          currency:
+            rid: -2
+          product:
+            rid: 2228272557282558142
+          amount: 1
+          realPrice: 
+        - type: 1
+          currency:
+            rid: 2228272557282558141
+          product:
+            rid: -2
+          amount: 5
+          realPrice: 
+        requirement:
+          pairs: []
+          label: 
+        nextUpgrade:
+          rid: -2
+    - rid: 2228272557282558143
+      type: {class: IAPProduct, ns: UniPay, asm: Assembly-CSharp}
+      data:
+        referenceID: 14f1b13b-43fd-48fe-af4b-be4584ee4c29
+        ID: sub_pack_2
+        storeIDs: []
+        category:
+          rid: 2228272557282558140
+        type: 2
+        title: Subscription pack 2
+        description: Please buy more tickets to get in.
+        discount: 0
+        fetch: 1
+        icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+        priceList:
+        - type: 0
+          currency:
+            rid: -2
+          product:
+            rid: -2
+          amount: 0
+          realPrice: $2.99
+        rewardList:
+        - type: 2
+          currency:
+            rid: -2
+          product:
+            rid: 2228272557282558143
+          amount: 1
+          realPrice: 
+        - type: 1
+          currency:
+            rid: 2228272557282558141
+          product:
+            rid: -2
+          amount: 10
+          realPrice: 
+        requirement:
+          pairs: []
+          label: 
+        nextUpgrade:
+          rid: -2
+    - rid: 2228272557282558144
+      type: {class: IAPProduct, ns: UniPay, asm: Assembly-CSharp}
+      data:
+        referenceID: 45972ad2-4d67-47dc-b43a-9c6fd02c23db
+        ID: sub_pack_3
+        storeIDs: []
+        category:
+          rid: 2228272557282558140
+        type: 2
+        title: Subscription pack 3
+        description: Please buy more tickets to get in.
+        discount: 0
+        fetch: 1
+        icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+        priceList:
+        - type: 0
+          currency:
+            rid: -2
+          product:
+            rid: -2
+          amount: 0
+          realPrice: $4.99
+        rewardList:
+        - type: 2
+          currency:
+            rid: -2
+          product:
+            rid: 2228272557282558144
+          amount: 1
+          realPrice: 
+        - type: 1
+          currency:
+            rid: 2228272557282558141
+          product:
+            rid: -2
+          amount: 15
+          realPrice: 
+        requirement:
+          pairs: []
+          label: 
+        nextUpgrade:
+          rid: -2
+    - rid: 2228272557282558145
+      type: {class: IAPProduct, ns: UniPay, asm: Assembly-CSharp}
+      data:
+        referenceID: d3b4ef1e-f74e-4d70-b2d4-7f3e70eab1e5
+        ID: sub_pack_4
+        storeIDs: []
+        category:
+          rid: 2228272557282558140
+        type: 2
+        title: Subscription pack 4
+        description: Please buy more tickets to get in.
+        discount: 0
+        fetch: 1
+        icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+        priceList:
+        - type: 0
+          currency:
+            rid: -2
+          product:
+            rid: -2
+          amount: 0
+          realPrice: $7.99
+        rewardList:
+        - type: 2
+          currency:
+            rid: -2
+          product:
+            rid: 2228272557282558145
+          amount: 1
+          realPrice: 
+        - type: 1
+          currency:
+            rid: 2228272557282558141
+          product:
+            rid: -2
+          amount: 20
+          realPrice: 
+        requirement:
+          pairs: []
+          label: 
+        nextUpgrade:
+          rid: -2
+    - rid: 2228272557282558146
+      type: {class: IAPProduct, ns: UniPay, asm: Assembly-CSharp}
+      data:
+        referenceID: 00bc0b9b-8fd2-4ec8-b403-433fe9d59e85
+        ID: sub_pack_5
+        storeIDs: []
+        category:
+          rid: 2228272557282558140
+        type: 2
+        title: Subscription pack 5
+        description: Please buy more tickets to get in.
+        discount: 0
+        fetch: 1
+        icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+        priceList:
+        - type: 0
+          currency:
+            rid: -2
+          product:
+            rid: -2
+          amount: 0
+          realPrice: $9.99
+        rewardList:
+        - type: 2
+          currency:
+            rid: -2
+          product:
+            rid: 2228272557282558146
+          amount: 1
+          realPrice: 
+        - type: 1
+          currency:
+            rid: 2228272557282558141
+          product:
+            rid: -2
+          amount: 25
+          realPrice: 
+        requirement:
+          pairs: []
+          label: 
+        nextUpgrade:
+          rid: -2
+    - rid: 2228272557282558147
+      type: {class: IAPProduct, ns: UniPay, asm: Assembly-CSharp}
+      data:
+        referenceID: 9503b47a-cfc7-499f-b197-059f3a1ff3ed
+        ID: sub_pack_6
+        storeIDs: []
+        category:
+          rid: 2228272557282558140
+        type: 2
+        title: Subscription pack 6
+        description: Please buy more tickets to get in.
+        discount: 0
+        fetch: 1
+        icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+        priceList:
+        - type: 0
+          currency:
+            rid: -2
+          product:
+            rid: -2
+          amount: 0
+          realPrice: $14.99
+        rewardList:
+        - type: 2
+          currency:
+            rid: -2
+          product:
+            rid: 2228272557282558147
+          amount: 1
+          realPrice: 
+        - type: 1
+          currency:
+            rid: 2228272557282558141
+          product:
+            rid: -2
+          amount: 30
+          realPrice: 
+        requirement:
+          pairs: []
+          label: 
+        nextUpgrade:
+          rid: -2
+    - rid: 2228272557282558148
+      type: {class: IAPProduct, ns: UniPay, asm: Assembly-CSharp}
+      data:
+        referenceID: e3097210-10c1-4fa0-8a67-456ee7248566
+        ID: sub_pack_7
+        storeIDs: []
+        category:
+          rid: 2228272557282558140
+        type: 2
+        title: Subscription pack 7
+        description: Please buy more tickets to get in.
+        discount: 0
+        fetch: 1
+        icon: {fileID: 5109834466660167259, guid: 800f3ede4bfec8f46b120b720a6a81ad, type: 3}
+        priceList:
+        - type: 0
+          currency:
+            rid: -2
+          product:
+            rid: -2
+          amount: 0
+          realPrice: $19.99
+        rewardList:
+        - type: 2
+          currency:
+            rid: -2
+          product:
+            rid: 2228272557282558148
+          amount: 1
+          realPrice: 
+        - type: 1
+          currency:
+            rid: 2228272557282558141
+          product:
+            rid: -2
+          amount: 50
+          realPrice: 
+        requirement:
+          pairs: []
+          label: 
+        nextUpgrade:
+          rid: -2

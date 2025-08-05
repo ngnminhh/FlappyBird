@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public int DEFAULT_PRICE_PER_REPLAY = 1;
 
     public GameObject popupNotEnough;
-    public GameObject tutorialPanel;
+    //public GameObject tutorialPanel;
     public GameObject tutorial_BTN;
     public GameObject restart_BTN;
     public AudioManager audioManager;
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
             defeatSfxSource = gameObject.AddComponent<AudioSource>();
 
         Pause();
-        ShowTutorialIfFirstTime();
+        //ShowTutorialIfFirstTime();
     }
     private void Start()
     {
@@ -73,67 +73,67 @@ public class GameManager : MonoBehaviour
             Debug.LogError("gameOver UI chưa được gán!");
         }
     }
-    public void ShowTutorialIfFirstTime()
-    {
-        if (!PlayerPrefs.HasKey("HasSeenTutorial"))
-        {
-            if (tutorialPanel != null)
-            {
-                restart_BTN.SetActive(false);
-                pause_BTN.SetActive(false);
-                tutorialPanel.SetActive(true);
-                PlayerPrefs.SetInt("HasSeenTutorial", 1);
-                PlayerPrefs.Save();
+    //public void ShowTutorialIfFirstTime()
+    //{
+    //    if (!PlayerPrefs.HasKey("HasSeenTutorial"))
+    //    {
+    //        if (tutorialPanel != null)
+    //        {
+    //            restart_BTN.SetActive(false);
+    //            pause_BTN.SetActive(false);
+    //            tutorialPanel.SetActive(true);
+    //            PlayerPrefs.SetInt("HasSeenTutorial", 1);
+    //            PlayerPrefs.Save();
 
-                if (uiManager != null)
-                    uiManager.HideStoreButton();
-                if (uiManager != null)
-                    uiManager.HideStore();
-                else
-                    Debug.LogWarning("uiManager is not assigned!");
-            }
-            else
-            {
-                Debug.LogError("tutorialPanel is not assigned!");
-            }
-        }
-        else
-        {
-            if (tutorialPanel != null)
-                tutorialPanel.SetActive(false);
-        }
-    }
-    public void ShowTutorial()
-    {
-        if (tutorialPanel != null)
-        {
-            restart_BTN.SetActive(false);
-            tutorialPanel.SetActive(true);
-            pause_BTN.SetActive(false);
-            tutorial_BTN.SetActive(false);
-            Animator[] anims = tutorialPanel.GetComponentsInChildren<Animator>(true);
-            foreach (var anim in anims)
-            {
-                anim.updateMode = AnimatorUpdateMode.UnscaledTime;
-                anim.enabled = true;
-            }
-        }
+    //            if (uiManager != null)
+    //                uiManager.HideStoreButton();
+    //            if (uiManager != null)
+    //                uiManager.HideStore();
+    //            else
+    //                Debug.LogWarning("uiManager is not assigned!");
+    //        }
+    //        else
+    //        {
+    //            Debug.LogError("tutorialPanel is not assigned!");
+    //        }
+    //    }
+    //    else
+    //    {
+    //        if (tutorialPanel != null)
+    //            tutorialPanel.SetActive(false);
+    //    }
+    //}
+    //public void ShowTutorial()
+    //{
+    //    if (tutorialPanel != null)
+    //    {
+    //        restart_BTN.SetActive(false);
+    //        tutorialPanel.SetActive(true);
+    //        pause_BTN.SetActive(false);
+    //        tutorial_BTN.SetActive(false);
+    //        Animator[] anims = tutorialPanel.GetComponentsInChildren<Animator>(true);
+    //        foreach (var anim in anims)
+    //        {
+    //            anim.updateMode = AnimatorUpdateMode.UnscaledTime;
+    //            anim.enabled = true;
+    //        }
+    //    }
 
-        if (uiManager != null)
-            uiManager.HideStoreButton();
-    }
+    //    if (uiManager != null)
+    //        uiManager.HideStoreButton();
+    //}
 
   
 
-    public void CloseTutorial()
-    {
-        if (tutorialPanel != null)
-            tutorialPanel.SetActive(false);
-        if (uiManager != null)
-            uiManager.ShowStoreButton();
-        tutorial_BTN.SetActive(true);
+    //public void CloseTutorial()
+    //{
+    //    if (tutorialPanel != null)
+    //        tutorialPanel.SetActive(false);
+    //    if (uiManager != null)
+    //        uiManager.ShowStoreButton();
+    //    tutorial_BTN.SetActive(true);
 
-    }
+    //}
 
     public void HidePopupNotEnough()
     {
@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
         Play_BTN.SetActive(false);
         gameOver.SetActive(false);
         uiManager.HideStoreButton();
-        tutorialPanel.SetActive(false);
+        //tutorialPanel.SetActive(false);
         tutorial_BTN.SetActive(false);
         pausePanel.SetActive(false);
         pause_BTN.SetActive(true);
